@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital@0;1&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto Condensed', sans-serif;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: all 0.3s linear; 
+}
+
+body {
+    background-color: #eee;
+}
+
+/* header */
+.header {
+    padding: .5rem 4%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-around;
+    border-bottom: 1px solid #ccc;
+    background: #fff;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+}
+
+.header .logo {
+    height: 2.8rem;
+}
+
+.header .search {
+    position: relative;
+}
+
+.header .search .input-cearch{
+    border: 1px solid #000;
+    width: 300px;
+    height: 40px;
+    border-radius: 20px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.header .search i {
+    position: absolute;
+    left: .6rem;
+    top: .8rem;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.header .auth {
+    padding: .5rem;
+    border-radius: 20px;
+    background-color: #25A18E;
+}
+
+.header .auth:hover {
+    background-color: #7AE582;
+}
+
+.header .auth img {
+    height: 1rem;
+    margin-right: 1rem;
+}
+
+.header .auth a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+}
+
+.header .shop img {
+    height: 2rem;
+}
+
+.header .shop{
+    display: flex;
+}
+
+.header .shop p {
+    height: 22px;
+    width: 22px;
+    border-radius: 50%;
+    background-color: #25A18E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    position: absolute;
+    transform: translate(95% , -30%);
+    font-size: .9rem;
+}

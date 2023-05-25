@@ -1,0 +1,125 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.container .box {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: #fff;
+    width: 390px;
+}
+
+.container .box .flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.container .box .flex img {
+    height:3rem;
+}
+
+.container .box .flex h2 {
+    font-size: 1.2rem;
+}
+
+.container .box .line {
+    display: flex;
+    width: 100%;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+}
+
+.container .box .full-name{
+    display: flex;
+}
+
+.container .box .full-name .f,
+.container .box .full-name .l{
+    width: 100%;
+}
+
+
+.container .box .full-name .f p,
+.container .box .full-name .l p{
+   margin-bottom: .3rem;
+}
+
+.container .box .full-name .f input,
+.container .box .full-name .l input{
+    border: 1px solid #ccc;
+    height: 28px;
+    width: 98%;
+    border-radius: 5px;
+    padding: 0 .3rem;
+    margin-bottom: .5rem;
+}
+
+.container .box label {
+    margin-bottom: .3rem;
+}
+
+.container .box input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 28px;
+    margin-bottom: .4rem;
+    padding: 0 .3rem;
+}
+
+.container .box .btn {
+    width: 200px;
+    margin-top: 1rem;
+   margin-right: auto;
+   margin-left: auto;   
+   background-color: #ad23b7;
+   height: 34px;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: .7px;
+    cursor: pointer;
+}
+
+.container .box .btn:hover {
+    background-color: #710179;
+}
+
+.container .box p {
+    margin-top: .3rem;
+}
+
+.container .box a {
+    font-size: .9rem;
+    color: #710179;
+    font-weight: 700;
+}
+
+.container .box a:hover {
+    text-decoration: underline;
+}
+
+.container .box .create {
+    display: flex;
+    text-align: center;
+    background: #25A18E;
+    width: 150px;
+    margin: auto;
+    color: #fff;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.container .box .create:hover {
+    background-color: #7AE582;
+}

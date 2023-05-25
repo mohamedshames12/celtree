@@ -1,26 +1,28 @@
 <?php
 
 include '../config/conncet.php';
-include_once '../mail.php';
 session_start();
 
-    if(isset($_POST['check'])){
-        $email = $_POST['email'];
-        $email = filter_var($email, FILTER_SANITIZE_STRING);
-        $code = rand(10000,90000);
-        $check_email = $conn->prepare("SELECT * FROM users WHERE email = ?");
-        $check_email->execute([$email]);
 
-        if($check_email->rowCount() > 0){
-            $insert_code = $conn->prepare("INSERT INTO `forgot`( email, code) VALUES(?,?)");
-            $insert_code->execute([$email,$code]);
-            
-            send_mail($email,'Password reset',"Your code is " . $code);
-            $success_msg[] = 'successfully!';
-            header("location: check_code.php");
-        }else{
-            $warning_msg[] = 'Email not found!';
-        }
+    if(isset($_POST['update'])){
+        $id = $_POST['id'];
+        $password = sha1($_POST['password']);
+        $password = filter_var($password, FILTER_SANITIZE_STRING);
+        $confirm_password = sha1($_POST['confirm-password']);
+        $confirm_password = filter_var($confirm_password, FILTER_SANITIZE_STRING);
+
+
+      
+            if($password !== $confirm_password){
+                $warning_msg[]= 'Password does not match!';
+
+            }else{
+                $update_password = $conn->prepare("UPDATE users SET password = ? WHERE id_user = ?");
+                $update_password->execute([$password, $id]);
+                $success_msg[] = 'Password updated successfully!';
+                header("location: login.php");
+            }
+    
     }
 ?>
 
@@ -55,10 +57,7 @@ session_start();
             <a href="register.php"> <img src="../icons/user.png" alt=""> Login && Register</a>
         </div>
 
-        <div class="shop">
-            <a href="#"><img src="../icons/shopping-bag.png" alt=""></a>
-            <p>2</p>
-        </div>
+    
 
     </header>
 
@@ -68,18 +67,24 @@ session_start();
         <form action="#" method="post" class="box">
             <div class="flex">
                 <img src="../icons/logo.png" alt="">
-                <h2>forget password</h2>
+                <h2>Update Password</h2>
             </div>
 
             <div class="line"></div>
 
 
-            <label for="email"> Your email:</label>
-            <input type="email" id="email" name="email" required>
-            <input type="submit" value="Check" name="check" class="btn">
+            <label for="email"> Update Password:</label>
+            <?php
+                $select_user = $conn->prepare("SELECT * FROM users");
+                $select_user->execute();
+                $fetch_user = $select_user->fetch(PDO::FETCH_ASSOC);
+            ?>
+            <input type="password" id="password" name="password" placeholder="enter new password" required>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="confirm password" required>
+            <input type="submit" value="update" name="update" class="btn">
+            <input type="hidden" value="<?= $fetch_user['id_user']?>" name="id">
             <br>
-            <div class="line"></div>
-            <a href="register.php" class="create">Create new account</a>
+
         </form>
     </div>
 

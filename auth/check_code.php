@@ -1,25 +1,20 @@
 <?php
 
 include '../config/conncet.php';
-include_once '../mail.php';
 session_start();
 
     if(isset($_POST['check'])){
-        $email = $_POST['email'];
-        $email = filter_var($email, FILTER_SANITIZE_STRING);
-        $code = rand(10000,90000);
-        $check_email = $conn->prepare("SELECT * FROM users WHERE email = ?");
-        $check_email->execute([$email]);
+        $code = $_POST['code'];
+        $code = filter_var($code, FILTER_SANITIZE_STRING);
+      
+        $check_code = $conn->prepare("SELECT * FROM forgot WHERE code = ?");
+        $check_code->execute([$code]);
 
-        if($check_email->rowCount() > 0){
-            $insert_code = $conn->prepare("INSERT INTO `forgot`( email, code) VALUES(?,?)");
-            $insert_code->execute([$email,$code]);
-            
-            send_mail($email,'Password reset',"Your code is " . $code);
-            $success_msg[] = 'successfully!';
-            header("location: check_code.php");
+        if($check_code->rowCount() > 0){
+            $success_msg[] = 'successfully  code!';
+            header("location: update_password.php");
         }else{
-            $warning_msg[] = 'Email not found!';
+            $warning_msg[] = 'incorrect code!';
         }
     }
 ?>
@@ -55,10 +50,7 @@ session_start();
             <a href="register.php"> <img src="../icons/user.png" alt=""> Login && Register</a>
         </div>
 
-        <div class="shop">
-            <a href="#"><img src="../icons/shopping-bag.png" alt=""></a>
-            <p>2</p>
-        </div>
+    
 
     </header>
 
@@ -68,18 +60,17 @@ session_start();
         <form action="#" method="post" class="box">
             <div class="flex">
                 <img src="../icons/logo.png" alt="">
-                <h2>forget password</h2>
+                <h2>check code</h2>
             </div>
 
             <div class="line"></div>
 
 
-            <label for="email"> Your email:</label>
-            <input type="email" id="email" name="email" required>
-            <input type="submit" value="Check" name="check" class="btn">
+            <label for="email"> Your Code:</label>
+            <input type="number" id="code" name="code" required>
+            <input type="submit" value="Next" name="check" class="btn">
             <br>
-            <div class="line"></div>
-            <a href="register.php" class="create">Create new account</a>
+
         </form>
     </div>
 

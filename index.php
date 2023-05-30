@@ -1,3 +1,17 @@
+<?php
+
+    include './config/conncet.php';
+    session_start();
+    
+    if(isset($_SESSION["user_id"])) {
+        $user_id = $_SESSION["user_id"];
+    }else {
+        $user_id = "";
+    }
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,23 +25,45 @@
     <title>celtree</title>
 </head>
 <body>
-    <header class="header">
-        <a href="index.php"><img src="icons/logo.png" alt="logo" class="logo"></a>
+<header class="header">
+    <a href="index.php"><img src="icons/logo.png" alt="logo" class="logo"></a>
 
-        <div class="search">
-            <input type="search" placeholder="search anything..." class="input-cearch">
-            <i class="fas fa-light fa-magnifying-glass"></i>
+    <div class="search">
+        <input type="search" placeholder="search anything..." class="input-cearch">
+        <i class="fas fa-light fa-magnifying-glass"></i>
+    </div>
+
+    <?php
+
+    $profile = $conn->prepare("SELECT * FROM `users` WHERE id_user = ?");
+    $profile->execute([$user_id]);
+
+    if ($profile->rowCount() > 0) {
+        $fetch_profile = $profile->fetch(PDO::FETCH_ASSOC);
+    ?>
+        <div class="auth">
+            <a href="auth/logout.php"> <img src="icons/user.png" alt=""> LogOut</a>
         </div>
+    <?php
+    } else {
+    ?>
 
         <div class="auth">
             <a href="auth/register.php"> <img src="icons/user.png" alt=""> Login && Register</a>
         </div>
+    <?php
+    }
 
-        <div class="shop">
-            <a href="#"><img src="icons/shopping-bag.png" alt=""></a>
-            <p>2</p>
-        </div>
+    ?>
 
-    </header>
+    <div class="shop">
+        <a href="#"><img src="icons/shopping-bag.png" alt=""></a>
+        <p>2</p>
+    </div>
+
+
+</header>
+
+    
 </body>
 </html>

@@ -24,9 +24,8 @@ if (isset($_POST['login'])) {
                     header('location: ../index.php');
                 } elseif ($fetch['user-type'] == 'admin') {
                     $_SESSION["admin_id"] = $fetch['id'];
-                    // header('location: ../admin/dashbord.php');
+                    header('location: ../admin/dashboard.php');
                     $success_msg[] = "admin!";
-            
                 }
             }
         } else{

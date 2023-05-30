@@ -1,7 +1,7 @@
 <?php
 
     include '../config/conncet.php';
-
+    session_start();
    
     if(isset($_POST['register'])){
         $id = create_unique_id();

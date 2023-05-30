@@ -1,3 +1,16 @@
+<?php
+
+  include '../../config/conncet.php';
+  session_start();
+  $admin_id = $_SESSION["admin_id"];
+
+  if(!$admin_id){
+    header("Location: ../../auth/login.php");
+  }
+
+?>
+
+
 <!DOCTYPE html>
 
 <html

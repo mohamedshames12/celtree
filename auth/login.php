@@ -24,7 +24,7 @@ if (isset($_POST['login'])) {
                     header('location: ../index.php');
                 } elseif ($fetch['user-type'] == 'admin') {
                     $_SESSION["admin_id"] = $fetch['id'];
-                    header('location: ../admin/dashboard.php');
+                    header('location: ../admin/php/index.php');
                     $success_msg[] = "admin!";
                 }
             }
@@ -42,6 +42,7 @@ if (isset($_POST['login'])) {
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="image/x-icon" href="../admin/assets/img/favicon/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- link cdnjs -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">

@@ -65,6 +65,17 @@ body {
     background-color: #7AE582;
 }
 
+
+.header .logout {
+    padding: .5rem;
+    border-radius: 20px;
+    background-color: #c94733;
+}
+
+.header .logout:hover {
+    background-color: #be1f06;
+}
+
 .header .auth img {
     height: 1rem;
     margin-right: 1rem;

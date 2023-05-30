@@ -20,10 +20,10 @@ if (isset($_POST['login'])) {
                 $warning_msg[] = "your email or password is incorrect!";
             } else {
                 if ($fetch['user-type'] == 'user') {
-                    $_SESSION["user_id"] = $fetch['id'];
+                    $_SESSION["user_id"] = $fetch['id_user'];
                     header('location: ../index.php');
                 } elseif ($fetch['user-type'] == 'admin') {
-                    $_SESSION["admin_id"] = $fetch['id'];
+                    $_SESSION["admin_id"] = $fetch['id_user'];
                     header('location: ../admin/php/index.php');
                     $success_msg[] = "admin!";
                 }

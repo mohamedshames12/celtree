@@ -120,7 +120,12 @@
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">John Doe</span>
+                            <?php
+                                $select_profile = $conn->prepare("SELECT * FROM `users` WHERE id_user = ?");
+                                $select_profile->execute([$admin_id]);
+                                $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
+                                ?>
+                                <span class="fw-semibold d-block" style="text-transform: capitalize;"><?= $fetch_profile['fname']?></span>
                             <small class="text-muted">Admin</small>
                           </div>
                         </div>
@@ -154,7 +159,7 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item" href="../../auth/logout.php">
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Log Out</span>
                       </a>
@@ -179,13 +184,13 @@
                     <div class="d-flex align-items-end row">
                       <div class="col-sm-7">
                         <div class="card-body">
-                          <h5 class="card-title text-primary">Congratulations John! 🎉</h5>
+                          <h5 class="card-title text-primary">Congratulations <span style="text-transform: capitalize;"><?= $fetch_profile['fname']?> <?= $fetch_profile['lname']?></span>! 🎉</h5>
                           <p class="mb-4">
                             You have done <span class="fw-bold">72%</span> more sales today. Check your new badge in
                             your profile.
                           </p>
 
-                          <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a>
+                          <a href="#" class="btn btn-sm btn-outline-primary">View Badges</a>
                         </div>
                       </div>
                       <div class="col-sm-5 text-center text-sm-left">

@@ -79,9 +79,38 @@
           <!-- Content wrapper -->
           <div class="content-wrapper">
             <!-- Content -->
+            <div class="add-products">
+              <form  method="POST">
+                <h2>Add Product</h2>
+                        <div class="row">
 
-           here coding..
+                          <div class="mb-3 col-md-12">
+                            <label for="name-product" class="form-label">Name Product</label>
+                            <input class="form-control" type="text" name="name-product" placeholder="Name Product"/>
+                          </div>
 
+                          <div class="mb-3 col-md-12">
+                            <label for="name-product" class="form-label">descrpition Product</label>
+                            <input class="form-control" type="text" name="name-product" placeholder="Descrpition Product"/>
+                          </div>
+
+                          <div class="mb-3 col-md-12">
+                            <label for="name-product" class="form-label">Price Product</label>
+                            <input class="form-control" type="number" name="name-product" placeholder="Price Product"/>
+                          </div>
+
+                          <div class="mb-3 col-md-12">
+                            <label for="name-product" class="form-label">Image Product</label>
+                            <input class="form-control" type="file" name="name-product" placeholder="Image Product" accept="image/*"/>
+                          </div>
+                         
+                        </div>
+                        <div class="mt-2">
+                          <button type="submit" class="btn btn-primary me-2">Add Product</button>
+                          <button type="submit" class="btn btn-outline-secondary">Cancel</button>
+                        </div>
+                      </form>
+            </div>
             <!-- Footer -->
             <footer class="content-footer footer bg-footer-theme">
               <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">

@@ -42,8 +42,8 @@
     if ($profile->rowCount() > 0) {
         $fetch_profile = $profile->fetch(PDO::FETCH_ASSOC);
     ?>
-        <div class="auth">
-            <a href="auth/logout.php"> <img src="icons/user.png" alt=""> LogOut</a>
+        <div class="auth logout">
+            <a href="auth/logout.php" style="padding: 2px 15px;"> LogOut</a>
         </div>
     <?php
     } else {
